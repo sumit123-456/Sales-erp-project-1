@@ -59,6 +59,7 @@ public class SecurityConfig {
                                 "/webjars/**",
                                 "/error",
                                 "/favicon.ico",
+                                "/auth/**"
                                 "/api/allocations/**"
                         ).permitAll()
                         .requestMatchers(
@@ -76,4 +77,5 @@ public class SecurityConfig {
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }
+
 }
