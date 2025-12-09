@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Login - Employee Portal</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #73abe7, #9169d3);
+      height: 100vh;
+    }
+
+    .login-card {
+      width: 350px;
+      border-radius: 12px;
+      background: #fff;
+      padding: 30px;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .btn-primary {
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="login-card shadow">
+      <h3 class="text-center text-primary mb-3">User Login</h3>
+
+      <form id="userLoginForm">
+        <!-- Email -->
+        <div class="mb-3">
+          <label for="userEmail" class="form-label">Email</label>
+          <input type="email" id="userEmail" class="form-control" placeholder="Enter your email" required>
+        </div>
+
+        <!-- Password -->
+        <div class="mb-3">
+          <label for="userPassword" class="form-label">Password</label>
+          <input type="password" id="userPassword" class="form-control" placeholder="Enter your password" required>
+        </div>
+
+        <!-- Forgot Password -->
+        <div class="mb-3 text-end">
+          <a href="#" data-bs-toggle="modal" data-bs-target="#forgotPasswordModal">Forgot Password?</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Forgot Password Modal -->
+  <div class="modal fade" id="forgotPasswordModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">Forgot Password</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <p class="mb-3">Enter your email to reset your password:</p>
+          <div class="mb-3">
+            <input type="email" id="forgotEmail" class="form-control" placeholder="Enter your email">
+          </div>
+          <button id="resetPasswordBtn" class="btn btn-primary w-100">Send Reset Link</button>
+          <div id="forgotMsg" class="mt-2 text-success" style="display:none;">✅ Reset link sent successfully!</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JS Logic -->
+  <script>
+    // ---------------------- User Login ----------------------
+    document.getElementById("userLoginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById("userEmail").value.trim().toLowerCase();
+      const password = document.getElementById("userPassword").value.trim();
+
+      if (!email || !password) {
+        alert("Please enter both email and password!");
+        return;
+      }
+
+      // Save user info
+      localStorage.setItem("user", JSON.stringify({
+        name: email.split("@")[0],
+        email: email
+      }));
+
+      // ---------------------- Redirect Based on Email ----------------------
+      if (email.includes("lead")) {
+        window.location.href = "projectlead.html";
+      } else if (email.includes("intake")) {
+        window.location.href = "projectintake.html";
+      } else if (email.includes("sales")) {
+        window.location.href = "salesperformance.html";
+      } else {
+        // Default for employees
+        window.location.href = "employee.html";
+      }
+    });
+
+    // ---------------------- Forgot Password ----------------------
+    document.getElementById("resetPasswordBtn").addEventListener("click", function () {
+      const email = document.getElementById("forgotEmail").value.trim();
+      const forgotMsg = document.getElementById("forgotMsg");
+
+      if (email) {
+        forgotMsg.textContent = "✅ Reset link sent to " + email;
+        forgotMsg.style.display = "block";
+        setTimeout(() => forgotMsg.style.display = "none", 3000);
+        document.getElementById("forgotEmail").value = "";
+      } else {
+        alert("❌ Please enter your email!");
+      }
+    });
+  </script>
+</body>
+
+</html>
+
