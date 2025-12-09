@@ -59,7 +59,7 @@ public class SecurityConfig {
                                 "/webjars/**",
                                 "/error",
                                 "/favicon.ico",
-                                "/auth/**"
+                                "/auth/**",
                                 "/api/allocations/**"
                         ).permitAll()
                         .requestMatchers(
@@ -75,7 +75,7 @@ public class SecurityConfig {
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+
         return http.build();
     }
-
 }
