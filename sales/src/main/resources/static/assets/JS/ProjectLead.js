@@ -9,7 +9,7 @@ let sourceChart = null;
 let conversionChart = null;
 
 // Backend Base URL
-const BASE = "https://sales-erp-project-1-production-b24d.up.railway.app:8080/leads";
+const BASE = "https://sales-erp-project-1.up.railway.app:8080/leads";
 
 // Utility: safe chart destroy
 function safeDestroy(chart) {
@@ -228,5 +228,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Auto-refresh every 60 sec
 setInterval(() => initDashboard(), 60000);
+
 
 
