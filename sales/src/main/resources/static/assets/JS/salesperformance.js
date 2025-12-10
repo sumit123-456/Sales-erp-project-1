@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const data = { projectId, itTeam, startDate, endDate };
 
-      const response = await fetch("http://localhost:9090/api/allocations", {
+      const response = await fetch("https://sales-erp-project-1.up.railway.app:8080/api/allocations", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -251,3 +251,4 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
