@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     try {
-      const API_BASE = 'http://localhost:9090';
+      const API_BASE = 'https://sales-erp-project-1-production-b24d.up.railway.app:8080';
       const res = await fetch(API_BASE + '/api/v1/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -88,3 +88,4 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
