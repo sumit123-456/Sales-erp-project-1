@@ -19,7 +19,7 @@ if (document.readyState === 'loading') {
     checkAuth();
 }
 
-const API_BASE = "https://sales-erp-project-1-production-b24d.up.railway.app:8080/api/v1/employees";
+const API_BASE = "https://sales-erp-project-1.up.railway.app:8080/api/v1/employees";
 
 // Helper function to get auth headers
 function getAuthHeaders() {
@@ -797,4 +797,5 @@ document.getElementById("downloadPdfBtn").addEventListener("click", async () => 
     });
 
 });
+
 
