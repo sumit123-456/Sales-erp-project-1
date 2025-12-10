@@ -1,5 +1,5 @@
 // ------------ BASE URL -------------
-const BASE = "http://localhost:9090/api/v1/dashboard";
+const BASE = "https://sales-erp-project-1-production-b24d.up.railway.app:8080/api/v1/dashboard";
 
 let salesChart = null;
 let topPerformanceChart = null;
@@ -275,3 +275,4 @@ setInterval(() => {
     loadRecentSales();
     loadTopPerformers();
 }, 30000);
+
