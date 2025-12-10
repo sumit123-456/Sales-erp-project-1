@@ -188,7 +188,7 @@ let barChart = null;
 // ============================
 async function loadProjects() {
   try {
-    const res = await fetch("http://localhost:9090/projects/all");
+    const res = await fetch("https://sales-erp-project-1-production-b24d.up.railway.app:8080/projects/all");
     const data = await res.json();
 
     allProjects = data;
@@ -370,3 +370,4 @@ function loadClientBarChart(data) {
 document.addEventListener("DOMContentLoaded", () => {
   loadProjects();
 });
+
