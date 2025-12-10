@@ -89,7 +89,7 @@ async function runFilterAndApply() {
   // First attempt: server-side filter
   if (qs) {
     try {
-      const url = `http://localhost:9090/projects/filter${qs ? `?${qs}` : ""}`;
+      const url = `https://sales-erp-project-1.up.railway.app:8080/projects/filter${qs ? `?${qs}` : ""}`;
       console.log("[Filters] Requesting filtered projects from", url);
       const res = await fetch(url);
       if (res.ok) {
@@ -232,10 +232,10 @@ function renderProjectTable(data) {
 async function loadAllCharts() {
   try {
     const [typeRes, statusRes, clientRes, overtimeRes] = await Promise.all([
-      fetch("http://localhost:9090/projects/group-by-type").then(r => r.json()),
-      fetch("http://localhost:9090/projects/group-by-status").then(r => r.json()),
-      fetch("http://localhost:9090/projects/group-by-client").then(r => r.json()),
-      fetch("http://localhost:9090/projects/over-time").then(r => r.json())
+      fetch("https://sales-erp-project-1.up.railway.app:8080/projects/group-by-type").then(r => r.json()),
+      fetch("https://sales-erp-project-1.up.railway.app:8080/projects/group-by-status").then(r => r.json()),
+      fetch("https://sales-erp-project-1.up.railway.app:8080/projects/group-by-client").then(r => r.json()),
+      fetch("https://sales-erp-project-1.up.railway.app:8080/projects/over-time").then(r => r.json())
     ]);
 
     renderCharts(overtimeRes);
@@ -370,4 +370,5 @@ function loadClientBarChart(data) {
 document.addEventListener("DOMContentLoaded", () => {
   loadProjects();
 });
+
 
