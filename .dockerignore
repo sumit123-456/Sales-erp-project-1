@@ -1,8 +1,0 @@
-target
-.git
-.gitignore
-*.log
-*.iml
-.idea
-.vscode
-node_modules
